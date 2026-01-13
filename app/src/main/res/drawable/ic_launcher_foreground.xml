@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background circle -->
+    <path
+        android:fillColor="#006A4E"
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
+    <!-- Letter V for Verbos -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,35L48,65L54,50L60,65L70,35L63,35L58,52L54,42L50,52L45,35Z"/>
+    <!-- Underline -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,70L68,70L68,73L40,73Z"/>
+</vector>
