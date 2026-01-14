@@ -1,5 +1,6 @@
 package com.example.portugueseverbs.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -7,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.portugueseverbs.model.*
@@ -26,25 +28,32 @@ fun ConjugationScreen(
             TopAppBar(
                 title = {
                     Column {
-                        Text(verb.infinitive)
+                        Text(
+                            text = verb.infinitive,
+                            fontWeight = FontWeight.Bold
+                        )
                         Text(
                             text = conjugation.tense.displayName,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontStyle = FontStyle.Italic
                         )
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = onBackClick) {
+                    IconButton(
+                        onClick = onBackClick,
+                        modifier = Modifier.size(64.dp)
+                    ) {
                         Icon(
                             Icons.Default.ArrowBack,
-                            contentDescription = "Voltar"
+                            contentDescription = "Voltar",
+                            modifier = Modifier.size(36.dp)
                         )
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
@@ -53,43 +62,51 @@ fun ConjugationScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp)
+                .padding(24.dp)
         ) {
             // Verb info card
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer
-                )
+                    containerColor = MaterialTheme.colorScheme.surface
+                ),
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.outline)
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp),
+                        .padding(20.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column {
                         Text(
-                            text = verb.translation,
-                            style = MaterialTheme.typography.bodyLarge
+                            text = verb.infinitive,
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            text = verb.translation ?: "(verbo regular)",
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontStyle = FontStyle.Italic
                         )
                         if (verb.isIrregular) {
                             Text(
-                                text = "Verbo irregular",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.error
+                                text = "verbo irregular",
+                                style = MaterialTheme.typography.bodySmall,
+                                fontWeight = FontWeight.Bold
                             )
                         }
                     }
                     Text(
                         text = verb.conjugationGroup.displayName,
-                        style = MaterialTheme.typography.labelLarge
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             // Conjugation card
             Card(
@@ -97,41 +114,37 @@ fun ConjugationScreen(
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surface
                 ),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.outline)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(20.dp)
+                        .padding(24.dp)
                 ) {
-                    // Tense name
+                    // Tense name - bold header
                     Text(
                         text = conjugation.tense.displayName,
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
+                        style = MaterialTheme.typography.headlineMedium,
+                        fontWeight = FontWeight.Bold
                     )
 
                     if (conjugation.tense.isCompound) {
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Surface(
-                            color = MaterialTheme.colorScheme.tertiaryContainer,
-                            shape = MaterialTheme.shapes.small
-                        ) {
-                            Text(
-                                text = "Tempo composto",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = MaterialTheme.colorScheme.onTertiaryContainer,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                            )
-                        }
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            text = "(Tempo composto)",
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontStyle = FontStyle.Italic
+                        )
                     }
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                    Divider(color = MaterialTheme.colorScheme.outlineVariant)
+                    Divider(
+                        color = MaterialTheme.colorScheme.outline,
+                        thickness = 2.dp
+                    )
 
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
                     // Conjugation content
                     if (isNominalForm(conjugation.tense)) {
@@ -154,8 +167,7 @@ private fun NominalFormContent(conjugation: Conjugation) {
             Text(
                 text = form,
                 style = MaterialTheme.typography.displaySmall,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onSurface
+                fontWeight = FontWeight.Bold
             )
         }
         else -> {
@@ -166,13 +178,13 @@ private fun NominalFormContent(conjugation: Conjugation) {
 
 @Composable
 private fun ConjugationTable(conjugation: Conjugation) {
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
         Person.entries.forEach { person ->
             val form = conjugation.forms[person]
             if (form != null && form != "-") {
                 ConjugationRow(person = person, form = form)
             } else if (form == "-") {
-                ConjugationRow(person = person, form = "-", isDisabled = true)
+                ConjugationRow(person = person, form = "—", isDisabled = true)
             }
         }
     }
@@ -189,24 +201,20 @@ private fun ConjugationRow(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        // Person - italic for grammatical terms
         Text(
             text = person.displayName,
-            style = MaterialTheme.typography.bodyLarge,
-            color = if (isDisabled)
-                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
-            else
-                MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.weight(0.4f)
+            style = MaterialTheme.typography.titleLarge,
+            fontStyle = FontStyle.Italic,
+            fontWeight = if (isDisabled) FontWeight.Light else FontWeight.Normal,
+            modifier = Modifier.weight(0.35f)
         )
+        // Conjugated form - bold for emphasis
         Text(
             text = form,
-            style = MaterialTheme.typography.titleLarge,
-            fontWeight = FontWeight.Medium,
-            color = if (isDisabled)
-                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
-            else
-                MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.weight(0.6f)
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = if (isDisabled) FontWeight.Light else FontWeight.Bold,
+            modifier = Modifier.weight(0.65f)
         )
     }
 }

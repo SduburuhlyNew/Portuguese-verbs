@@ -35,7 +35,7 @@ class VerbViewModel : ViewModel() {
     val uiState: StateFlow<VerbUiState> = _uiState.asStateFlow()
 
     fun onVerbInputChange(input: String) {
-        val verb = repository.getVerbByInfinitive(input.trim())
+        val verb = repository.getOrCreateVerb(input.trim())
         _uiState.value = _uiState.value.copy(
             verbInput = input,
             verbFound = verb != null,

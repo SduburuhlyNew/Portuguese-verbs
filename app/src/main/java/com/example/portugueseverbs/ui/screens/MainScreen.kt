@@ -1,11 +1,12 @@
 package com.example.portugueseverbs.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Clear
@@ -13,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.portugueseverbs.model.Tense
@@ -31,10 +33,15 @@ fun MainScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Verbos Portugueses") },
+                title = {
+                    Text(
+                        text = "Verbos Portugueses",
+                        fontWeight = FontWeight.Bold
+                    )
+                },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    titleContentColor = MaterialTheme.colorScheme.onSurface
                 )
             )
         }
@@ -43,16 +50,16 @@ fun MainScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
+                .imePadding()
         ) {
-            // Verb input field
+            // Fixed top section: Verb input field
             VerbInputField(
                 value = uiState.verbInput,
                 onValueChange = onVerbInputChange,
                 isValid = uiState.verbFound,
-                verb = uiState.currentVerb,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(24.dp)
             )
 
             // Error message
@@ -60,71 +67,83 @@ fun MainScreen(
                 uiState.errorMessage?.let { error ->
                     Text(
                         text = error,
-                        color = MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontStyle = FontStyle.Italic,
+                        modifier = Modifier.padding(horizontal = 24.dp)
                     )
                 }
             }
 
-            // Verb info when found
+            // Fixed section: Verb info when found
             AnimatedVisibility(visible = uiState.verbFound && uiState.currentVerb != null) {
                 uiState.currentVerb?.let { verb ->
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 24.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer
-                        )
+                            containerColor = MaterialTheme.colorScheme.surface
+                        ),
+                        border = BorderStroke(2.dp, MaterialTheme.colorScheme.outline)
                     ) {
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(12.dp),
+                                .padding(20.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column {
                                 Text(
                                     text = verb.infinitive,
-                                    style = MaterialTheme.typography.titleMedium,
+                                    style = MaterialTheme.typography.headlineSmall,
                                     fontWeight = FontWeight.Bold
                                 )
                                 Text(
-                                    text = verb.translation,
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f)
+                                    text = verb.translation ?: "(verbo regular)",
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    fontStyle = FontStyle.Italic
                                 )
+                                if (verb.isIrregular) {
+                                    Text(
+                                        text = "verbo irregular",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                }
                             }
                             Text(
                                 text = verb.conjugationGroup.displayName,
-                                style = MaterialTheme.typography.labelMedium
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold
                             )
                         }
                     }
                 }
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             // Instruction text
             Text(
                 text = if (uiState.verbFound) "Selecione um tempo verbal:" else "Digite um verbo para começar",
-                style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = 16.dp)
+                style = MaterialTheme.typography.titleMedium,
+                fontStyle = if (!uiState.verbFound) FontStyle.Italic else FontStyle.Normal,
+                modifier = Modifier.padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Tense groups list
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+            // Scrollable tense groups list
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 24.dp, vertical = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
-                items(viewModel.getAllTenseGroups()) { group ->
+                viewModel.getAllTenseGroups().forEach { group ->
                     TenseGroupCard(
                         group = group,
                         tenses = viewModel.getTensesForGroup(group),
@@ -132,6 +151,8 @@ fun MainScreen(
                         onTenseClick = onTenseClick
                     )
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
             }
         }
     }
@@ -142,27 +163,44 @@ private fun VerbInputField(
     value: String,
     onValueChange: (String) -> Unit,
     isValid: Boolean,
-    verb: com.example.portugueseverbs.model.Verb?,
     modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        label = { Text("Digite o verbo (infinitivo)") },
-        placeholder = { Text("ex: falar, comer, partir") },
+        label = {
+            Text(
+                text = "Digite o verbo (infinitivo)",
+                style = MaterialTheme.typography.bodyLarge
+            )
+        },
+        placeholder = {
+            Text(
+                text = "ex: falar, comer, partir",
+                fontStyle = FontStyle.Italic
+            )
+        },
+        textStyle = MaterialTheme.typography.headlineSmall,
         singleLine = true,
         trailingIcon = {
-            Row {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 if (isValid) {
                     Icon(
                         Icons.Default.Check,
                         contentDescription = "Verbo válido",
-                        tint = MaterialTheme.colorScheme.primary
+                        modifier = Modifier.size(32.dp)
                     )
                 }
                 if (value.isNotEmpty()) {
-                    IconButton(onClick = { onValueChange("") }) {
-                        Icon(Icons.Default.Clear, contentDescription = "Limpar")
+                    IconButton(
+                        onClick = { onValueChange("") },
+                        modifier = Modifier.size(56.dp)
+                    ) {
+                        Icon(
+                            Icons.Default.Clear,
+                            contentDescription = "Limpar",
+                            modifier = Modifier.size(32.dp)
+                        )
                     }
                 }
             }
@@ -170,7 +208,11 @@ private fun VerbInputField(
         isError = value.isNotEmpty() && !isValid,
         supportingText = {
             if (value.isNotEmpty() && !isValid) {
-                Text("Verbo não encontrado na base de dados")
+                Text(
+                    text = "Verbo não encontrado",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontStyle = FontStyle.Italic
+                )
             }
         },
         modifier = modifier
@@ -187,40 +229,41 @@ private fun TenseGroupCard(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = if (enabled)
-                MaterialTheme.colorScheme.surface
-            else
-                MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+            containerColor = MaterialTheme.colorScheme.surface
         ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (enabled) 2.dp else 0.dp
+        border = BorderStroke(
+            width = if (enabled) 2.dp else 1.dp,
+            color = if (enabled)
+                MaterialTheme.colorScheme.outline
+            else
+                MaterialTheme.colorScheme.outlineVariant
         )
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(20.dp)
         ) {
-            // Group header
+            // Group header - bold for emphasis
             Text(
                 text = group.displayName,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = if (enabled)
-                    MaterialTheme.colorScheme.primary
-                else
-                    MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
-            // Tense chips
+            Divider(color = MaterialTheme.colorScheme.outline, thickness = 1.dp)
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Tense buttons - larger touch targets
             FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 tenses.forEach { tense ->
-                    TenseChip(
+                    TenseButton(
                         tense = tense,
                         enabled = enabled,
                         onClick = { onTenseClick(tense) }
@@ -245,22 +288,29 @@ private fun FlowRow(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TenseChip(
+private fun TenseButton(
     tense: Tense,
     enabled: Boolean,
     onClick: () -> Unit
 ) {
-    FilterChip(
-        selected = false,
+    OutlinedButton(
         onClick = onClick,
         enabled = enabled,
-        label = {
-            Text(
-                text = tense.displayName,
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
-    )
+        modifier = Modifier.height(56.dp),
+        border = BorderStroke(
+            width = if (enabled) 2.dp else 1.dp,
+            color = if (enabled)
+                MaterialTheme.colorScheme.outline
+            else
+                MaterialTheme.colorScheme.outlineVariant
+        ),
+        contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp)
+    ) {
+        Text(
+            text = tense.displayName,
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = if (enabled) FontWeight.Medium else FontWeight.Normal
+        )
+    }
 }
