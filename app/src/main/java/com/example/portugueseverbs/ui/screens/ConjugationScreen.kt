@@ -26,28 +26,16 @@ fun ConjugationScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = {
-                    Column {
-                        Text(
-                            text = verb.infinitive,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            text = conjugation.tense.displayName,
-                            style = MaterialTheme.typography.bodyLarge,
-                            fontStyle = FontStyle.Italic
-                        )
-                    }
-                },
+                title = {},
                 navigationIcon = {
                     IconButton(
                         onClick = onBackClick,
-                        modifier = Modifier.size(64.dp)
+                        modifier = Modifier.size(72.dp)
                     ) {
                         Icon(
                             Icons.Default.ArrowBack,
                             contentDescription = "Voltar",
-                            modifier = Modifier.size(36.dp)
+                            modifier = Modifier.size(48.dp)
                         )
                     }
                 },
@@ -123,7 +111,7 @@ fun ConjugationScreen(
                 ) {
                     // Tense name - bold header
                     Text(
-                        text = conjugation.tense.displayName,
+                        text = conjugation.tense.fullDisplayName,
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -139,7 +127,7 @@ fun ConjugationScreen(
 
                     Spacer(modifier = Modifier.height(24.dp))
 
-                    Divider(
+                    HorizontalDivider(
                         color = MaterialTheme.colorScheme.outline,
                         thickness = 2.dp
                     )

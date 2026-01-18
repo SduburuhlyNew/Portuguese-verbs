@@ -253,7 +253,7 @@ private fun TenseGroupCard(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Divider(color = MaterialTheme.colorScheme.outline, thickness = 1.dp)
+            HorizontalDivider(color = MaterialTheme.colorScheme.outline, thickness = 1.dp)
 
             Spacer(modifier = Modifier.height(16.dp))
 

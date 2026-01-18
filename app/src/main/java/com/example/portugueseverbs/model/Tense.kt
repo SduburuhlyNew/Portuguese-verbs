@@ -40,7 +40,15 @@ enum class Tense(
     INFINITIVO_PESSOAL("Infinitivo Pessoal", TenseCategory.FORMAS_NOMINAIS),
     INFINITIVO_IMPESSOAL("Infinitivo Impessoal", TenseCategory.FORMAS_NOMINAIS),
     GERUNDIO("Gerúndio", TenseCategory.FORMAS_NOMINAIS),
-    PARTICIPIO("Particípio", TenseCategory.FORMAS_NOMINAIS)
+    PARTICIPIO("Particípio", TenseCategory.FORMAS_NOMINAIS);
+
+    val fullDisplayName: String
+        get() = when (category) {
+            TenseCategory.INDICATIVO -> "$displayName do Indicativo"
+            TenseCategory.CONJUNTIVO -> "$displayName do Conjuntivo"
+            TenseCategory.IMPERATIVO -> displayName
+            TenseCategory.FORMAS_NOMINAIS -> displayName
+        }
 }
 
 enum class Person(val displayName: String) {

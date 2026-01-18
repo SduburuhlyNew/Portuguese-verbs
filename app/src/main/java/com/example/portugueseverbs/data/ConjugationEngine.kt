@@ -410,6 +410,22 @@ class ConjugationEngine {
                 Person.NOS to "sejamos",
                 Person.VOS to "sejais",
                 Person.ELES_ELAS_VOCES to "sejam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "fosse",
+                Person.TU to "fosses",
+                Person.ELE_ELA_VOCE to "fosse",
+                Person.NOS to "fôssemos",
+                Person.VOS to "fôsseis",
+                Person.ELES_ELAS_VOCES to "fossem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "for",
+                Person.TU to "fores",
+                Person.ELE_ELA_VOCE to "for",
+                Person.NOS to "formos",
+                Person.VOS to "fordes",
+                Person.ELES_ELAS_VOCES to "forem"
             ))
         ),
         "estar" to mapOf(
@@ -436,6 +452,22 @@ class ConjugationEngine {
                 Person.NOS to "estejamos",
                 Person.VOS to "estejais",
                 Person.ELES_ELAS_VOCES to "estejam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "estivesse",
+                Person.TU to "estivesses",
+                Person.ELE_ELA_VOCE to "estivesse",
+                Person.NOS to "estivéssemos",
+                Person.VOS to "estivésseis",
+                Person.ELES_ELAS_VOCES to "estivessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "estiver",
+                Person.TU to "estiveres",
+                Person.ELE_ELA_VOCE to "estiver",
+                Person.NOS to "estivermos",
+                Person.VOS to "estiverdes",
+                Person.ELES_ELAS_VOCES to "estiverem"
             ))
         ),
         "ter" to mapOf(
@@ -470,6 +502,22 @@ class ConjugationEngine {
                 Person.NOS to "tenhamos",
                 Person.VOS to "tenhais",
                 Person.ELES_ELAS_VOCES to "tenham"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "tivesse",
+                Person.TU to "tivesses",
+                Person.ELE_ELA_VOCE to "tivesse",
+                Person.NOS to "tivéssemos",
+                Person.VOS to "tivésseis",
+                Person.ELES_ELAS_VOCES to "tivessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "tiver",
+                Person.TU to "tiveres",
+                Person.ELE_ELA_VOCE to "tiver",
+                Person.NOS to "tivermos",
+                Person.VOS to "tiverdes",
+                Person.ELES_ELAS_VOCES to "tiverem"
             ))
         ),
         "ir" to mapOf(
@@ -504,6 +552,22 @@ class ConjugationEngine {
                 Person.NOS to "vamos",
                 Person.VOS to "vades",
                 Person.ELES_ELAS_VOCES to "vão"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "fosse",
+                Person.TU to "fosses",
+                Person.ELE_ELA_VOCE to "fosse",
+                Person.NOS to "fôssemos",
+                Person.VOS to "fôsseis",
+                Person.ELES_ELAS_VOCES to "fossem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "for",
+                Person.TU to "fores",
+                Person.ELE_ELA_VOCE to "for",
+                Person.NOS to "formos",
+                Person.VOS to "fordes",
+                Person.ELES_ELAS_VOCES to "forem"
             ))
         ),
         "vir" to mapOf(
@@ -522,6 +586,38 @@ class ConjugationEngine {
                 Person.NOS to "viemos",
                 Person.VOS to "viestes",
                 Person.ELES_ELAS_VOCES to "vieram"
+            )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "venha",
+                Person.TU to "venhas",
+                Person.ELE_ELA_VOCE to "venha",
+                Person.NOS to "venhamos",
+                Person.VOS to "venhais",
+                Person.ELES_ELAS_VOCES to "venham"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "viesse",
+                Person.TU to "viesses",
+                Person.ELE_ELA_VOCE to "viesse",
+                Person.NOS to "viéssemos",
+                Person.VOS to "viésseis",
+                Person.ELES_ELAS_VOCES to "viessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "vier",
+                Person.TU to "vieres",
+                Person.ELE_ELA_VOCE to "vier",
+                Person.NOS to "viermos",
+                Person.VOS to "vierdes",
+                Person.ELES_ELAS_VOCES to "vierem"
+            )),
+            Tense.PRETERITO_IMPERFEITO to Conjugation(Tense.PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "vinha",
+                Person.TU to "vinhas",
+                Person.ELE_ELA_VOCE to "vinha",
+                Person.NOS to "vínhamos",
+                Person.VOS to "vínheis",
+                Person.ELES_ELAS_VOCES to "vinham"
             )),
             Tense.PARTICIPIO to Conjugation(Tense.PARTICIPIO, mapOf(
                 Person.EU to "vindo"
@@ -547,6 +643,30 @@ class ConjugationEngine {
                 Person.VOS to "fizestes",
                 Person.ELES_ELAS_VOCES to "fizeram"
             )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "faça",
+                Person.TU to "faças",
+                Person.ELE_ELA_VOCE to "faça",
+                Person.NOS to "façamos",
+                Person.VOS to "façais",
+                Person.ELES_ELAS_VOCES to "façam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "fizesse",
+                Person.TU to "fizesses",
+                Person.ELE_ELA_VOCE to "fizesse",
+                Person.NOS to "fizéssemos",
+                Person.VOS to "fizésseis",
+                Person.ELES_ELAS_VOCES to "fizessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "fizer",
+                Person.TU to "fizeres",
+                Person.ELE_ELA_VOCE to "fizer",
+                Person.NOS to "fizermos",
+                Person.VOS to "fizerdes",
+                Person.ELES_ELAS_VOCES to "fizerem"
+            )),
             Tense.PARTICIPIO to Conjugation(Tense.PARTICIPIO, mapOf(
                 Person.EU to "feito"
             ))
@@ -568,6 +688,30 @@ class ConjugationEngine {
                 Person.VOS to "dissestes",
                 Person.ELES_ELAS_VOCES to "disseram"
             )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "diga",
+                Person.TU to "digas",
+                Person.ELE_ELA_VOCE to "diga",
+                Person.NOS to "digamos",
+                Person.VOS to "digais",
+                Person.ELES_ELAS_VOCES to "digam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "dissesse",
+                Person.TU to "dissesses",
+                Person.ELE_ELA_VOCE to "dissesse",
+                Person.NOS to "disséssemos",
+                Person.VOS to "dissésseis",
+                Person.ELES_ELAS_VOCES to "dissessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "disser",
+                Person.TU to "disseres",
+                Person.ELE_ELA_VOCE to "disser",
+                Person.NOS to "dissermos",
+                Person.VOS to "disserdes",
+                Person.ELES_ELAS_VOCES to "disserem"
+            )),
             Tense.PARTICIPIO to Conjugation(Tense.PARTICIPIO, mapOf(
                 Person.EU to "dito"
             ))
@@ -588,6 +732,30 @@ class ConjugationEngine {
                 Person.NOS to "pudemos",
                 Person.VOS to "pudestes",
                 Person.ELES_ELAS_VOCES to "puderam"
+            )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "possa",
+                Person.TU to "possas",
+                Person.ELE_ELA_VOCE to "possa",
+                Person.NOS to "possamos",
+                Person.VOS to "possais",
+                Person.ELES_ELAS_VOCES to "possam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "pudesse",
+                Person.TU to "pudesses",
+                Person.ELE_ELA_VOCE to "pudesse",
+                Person.NOS to "pudéssemos",
+                Person.VOS to "pudésseis",
+                Person.ELES_ELAS_VOCES to "pudessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "puder",
+                Person.TU to "puderes",
+                Person.ELE_ELA_VOCE to "puder",
+                Person.NOS to "pudermos",
+                Person.VOS to "puderdes",
+                Person.ELES_ELAS_VOCES to "puderem"
             ))
         ),
         "querer" to mapOf(
@@ -606,6 +774,30 @@ class ConjugationEngine {
                 Person.NOS to "quisemos",
                 Person.VOS to "quisestes",
                 Person.ELES_ELAS_VOCES to "quiseram"
+            )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "queira",
+                Person.TU to "queiras",
+                Person.ELE_ELA_VOCE to "queira",
+                Person.NOS to "queiramos",
+                Person.VOS to "queirais",
+                Person.ELES_ELAS_VOCES to "queiram"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "quisesse",
+                Person.TU to "quisesses",
+                Person.ELE_ELA_VOCE to "quisesse",
+                Person.NOS to "quiséssemos",
+                Person.VOS to "quisésseis",
+                Person.ELES_ELAS_VOCES to "quisessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "quiser",
+                Person.TU to "quiseres",
+                Person.ELE_ELA_VOCE to "quiser",
+                Person.NOS to "quisermos",
+                Person.VOS to "quiserdes",
+                Person.ELES_ELAS_VOCES to "quiserem"
             ))
         ),
         "saber" to mapOf(
@@ -632,6 +824,22 @@ class ConjugationEngine {
                 Person.NOS to "saibamos",
                 Person.VOS to "saibais",
                 Person.ELES_ELAS_VOCES to "saibam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "soubesse",
+                Person.TU to "soubesses",
+                Person.ELE_ELA_VOCE to "soubesse",
+                Person.NOS to "soubéssemos",
+                Person.VOS to "soubésseis",
+                Person.ELES_ELAS_VOCES to "soubessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "souber",
+                Person.TU to "souberes",
+                Person.ELE_ELA_VOCE to "souber",
+                Person.NOS to "soubermos",
+                Person.VOS to "souberdes",
+                Person.ELES_ELAS_VOCES to "souberem"
             ))
         ),
         "ver" to mapOf(
@@ -650,6 +858,30 @@ class ConjugationEngine {
                 Person.NOS to "vimos",
                 Person.VOS to "vistes",
                 Person.ELES_ELAS_VOCES to "viram"
+            )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "veja",
+                Person.TU to "vejas",
+                Person.ELE_ELA_VOCE to "veja",
+                Person.NOS to "vejamos",
+                Person.VOS to "vejais",
+                Person.ELES_ELAS_VOCES to "vejam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "visse",
+                Person.TU to "visses",
+                Person.ELE_ELA_VOCE to "visse",
+                Person.NOS to "víssemos",
+                Person.VOS to "vísseis",
+                Person.ELES_ELAS_VOCES to "vissem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "vir",
+                Person.TU to "vires",
+                Person.ELE_ELA_VOCE to "vir",
+                Person.NOS to "virmos",
+                Person.VOS to "virdes",
+                Person.ELES_ELAS_VOCES to "virem"
             )),
             Tense.PARTICIPIO to Conjugation(Tense.PARTICIPIO, mapOf(
                 Person.EU to "visto"
@@ -679,6 +911,22 @@ class ConjugationEngine {
                 Person.NOS to "demos",
                 Person.VOS to "deis",
                 Person.ELES_ELAS_VOCES to "deem"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "desse",
+                Person.TU to "desses",
+                Person.ELE_ELA_VOCE to "desse",
+                Person.NOS to "déssemos",
+                Person.VOS to "désseis",
+                Person.ELES_ELAS_VOCES to "dessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "der",
+                Person.TU to "deres",
+                Person.ELE_ELA_VOCE to "der",
+                Person.NOS to "dermos",
+                Person.VOS to "derdes",
+                Person.ELES_ELAS_VOCES to "derem"
             ))
         ),
         "trazer" to mapOf(
@@ -697,6 +945,30 @@ class ConjugationEngine {
                 Person.NOS to "trouxemos",
                 Person.VOS to "trouxestes",
                 Person.ELES_ELAS_VOCES to "trouxeram"
+            )),
+            Tense.SUBJUNTIVO_PRESENTE to Conjugation(Tense.SUBJUNTIVO_PRESENTE, mapOf(
+                Person.EU to "traga",
+                Person.TU to "tragas",
+                Person.ELE_ELA_VOCE to "traga",
+                Person.NOS to "tragamos",
+                Person.VOS to "tragais",
+                Person.ELES_ELAS_VOCES to "tragam"
+            )),
+            Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO to Conjugation(Tense.SUBJUNTIVO_PRETERITO_IMPERFEITO, mapOf(
+                Person.EU to "trouxesse",
+                Person.TU to "trouxesses",
+                Person.ELE_ELA_VOCE to "trouxesse",
+                Person.NOS to "trouxéssemos",
+                Person.VOS to "trouxésseis",
+                Person.ELES_ELAS_VOCES to "trouxessem"
+            )),
+            Tense.SUBJUNTIVO_FUTURO to Conjugation(Tense.SUBJUNTIVO_FUTURO, mapOf(
+                Person.EU to "trouxer",
+                Person.TU to "trouxeres",
+                Person.ELE_ELA_VOCE to "trouxer",
+                Person.NOS to "trouxermos",
+                Person.VOS to "trouxerdes",
+                Person.ELES_ELAS_VOCES to "trouxerem"
             ))
         ),
         "pedir" to mapOf(
